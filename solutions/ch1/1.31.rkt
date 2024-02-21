@@ -13,15 +13,16 @@
 (define (factorial n)
   (product identity 1 inc n))
 
-(define (pi/4 n)
+(define (pi n)
   (define (add-two x) (+ x 2))
-  (/ (* (product identity 2 add-two n)
-        (product identity 4 add-two (- n 1)))
-     (* (product identity 3 add-two n)
-        (product identity 3 add-two (- n 1)))))
+  (* 4
+     (/ (* (product identity 2 add-two n)
+           (product identity 4 add-two (- n 1)))
+        (* (product identity 3 add-two n)
+           (product identity 3 add-two (- n 1))))))
 
-(pi/4 100)
-(pi/4 1000)
+(pi 100)
+(pi 1000)
 
 (define (product-iter term a next b)
   (define (iter a result)
